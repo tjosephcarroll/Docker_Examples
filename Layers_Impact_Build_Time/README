@@ -1,0 +1,21 @@
+These Dockerfiles demonstrate the impact on build time that many layers add to your Image build. Additionally, every added layer represents more metadata. Unnecessary layers should be avoided at all costs.
+
+To test.
+
+    $ cd many
+    $ time docker build . --no-cache
+    ...
+    ...
+    real	0m3.499s
+    user	0m0.088s
+    sys	0m0.048s
+    $ cd ../few
+    $ time docker build . --no-cache
+    ...
+    ...
+    real	0m0.631s
+    user	0m0.083s
+    sys	0m0.040s
+
+The these dockerfiles are functionally equivalent, but one builds many times faster than the other. 
+
